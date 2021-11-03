@@ -69,7 +69,7 @@ def compress(data):
 
 try:
     import pyfastgbalz77
-    compress = lambda x: pyfastgbalz77.compress(x, True)
+    compress = lambda x: pyfastgbalz77.compress(x, False)
 except ImportError:
     pass
 
@@ -208,7 +208,8 @@ for file in os.listdir("."):
     installer += f"""    {{
         __mx_mug({file[:-4]}Mug, __mug_dmp)
         #incbin "{file[:-4]}.pos.dmp"
-        BYTE 1 0 1 0; POP;
+        BYTE 1 0 0 0; POP;
+        align 4
         __mug_dmp:
             #incbin "{file[:-4]}.dmp"
     }}\n
