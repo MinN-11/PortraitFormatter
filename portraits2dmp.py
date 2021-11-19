@@ -91,7 +91,7 @@ def palette_to_bytes(palette):
     f = lambda x: (x >> 3) & 0x1f
     if len(palette) < 16:
         palette += [(0, 0, 0)] * (16 - len(palette))
-    for r, g, b in palette:
+    for r, g, b, *rest in palette:
         dr, dg, db = f(r), f(g), f(b)
         v = dr + (dg << 5) + (db << 10)
         buffer += struct.pack("<H", v)
